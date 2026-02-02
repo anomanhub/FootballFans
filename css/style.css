@@ -1,10 +1,37 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #111;
+  background: #0e0e0e;
   color: #eee;
-  padding: 20px;
+  font-family: Arial, sans-serif;
+  padding: 16px;
 }
+
 .match {
-  padding: 10px;
-  border-bottom: 1px solid #333;
+  padding: 12px;
+  border-bottom: 1px solid #222;
+}
+
+.teams {
+  font-weight: bold;
+}
+
+.info {
+  display: flex;
+  gap: 12px;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.score {
+  color: #0f0;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 6px;
+  border-bottom: 1px solid #222;
 }

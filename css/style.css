@@ -1,0 +1,10 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: #eee;
+  padding: 20px;
+}
+.match {
+  padding: 10px;
+  border-bottom: 1px solid #333;
+}

@@ -1,39 +1,62 @@
-import { loadLocalData } from './localData.js'
-import { loadLiveScores } from './liveApi.js'
+document.addEventListener("DOMContentLoaded", () => {
+  loadMatches();
+  loadStandings();
+});
 
-const matchList = document.getElementById('matches')
+function loadMatches() {
+  fetch("./data/matches.json")
+    .then(res => res.json())
+    .then(matches => {
+      const container = document.getElementById("matches");
+      container.innerHTML = "";
 
-function renderMatch(match) {
-  const div = document.createElement('div')
-  div.className = 'match'
-  div.innerHTML = `
-    <strong>${match.home}</strong>
-    vs
-    <strong>${match.away}</strong>
-    <span>${match.score}</span>
-  `
-  matchList.appendChild(div)
+      matches.forEach(m => {
+        const div = document.createElement("div");
+        div.className = "match";
+        div.innerHTML = `
+          <div class="teams">${m.home} vs ${m.away}</div>
+          <div class="info">
+            <span>${m.time}</span>
+            <span class="score">${m.score}</span>
+            <span class="status">${m.status}</span>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    })
+    .catch(err => {
+      console.error("Gagal load matches:", err);
+    });
 }
 
-async function init() {
-  const { matches } = await loadLocalData()
-  matches.forEach(renderMatch)
+function loadStandings() {
+  fetch("./data/standings.json")
+    .then(res => res.json())
+    .then(data => {
+      const table = document.getElementById("standings");
+      if (!table) return;
 
-  const live = await loadLiveScores()
-  live.forEach(l => {
-    const found = matches.find(
-      m =>
-        m.home === l.teams.home.name &&
-        m.away === l.teams.away.name
-    )
-    if (found) {
-      found.score =
-        l.goals.home + ' - ' + l.goals.away
-    }
-  })
-
-  matchList.innerHTML = ''
-  matches.forEach(renderMatch)
-}
+      table.innerHTML = `
+        <h2>${data.league}</h2>
+        <table>
+          <tr>
+            <th>#</th><th>Team</th><th>P</th><th>GD</th><th>Pts</th>
+          </tr>
+          ${data.table.map(t => `
+            <tr>
+              <td>${t.pos}</td>
+              <td>${t.team}</td>
+              <td>${t.played}</td>
+              <td>${t.gd}</td>
+              <td>${t.pts}</td>
+            </tr>
+          `).join("")}
+        </table>
+      `;
+    })
+    .catch(err => {
+      console.error("Gagal load standings:", err);
+    });
+}}
 
 init()

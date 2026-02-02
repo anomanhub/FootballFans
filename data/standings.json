@@ -1,8 +1,9 @@
 {
-  "league": "epl",
-  "updated": "2026-02-01",
+  "league": "Premier League",
+  "updated": "2026-02-02",
   "table": [
-    { "team": "Arsenal", "pts": 52, "gd": 25 },
-    { "team": "Liverpool", "pts": 50, "gd": 22 }
+    { "pos": 1, "team": "Arsenal", "played": 24, "gd": 25, "pts": 52 },
+    { "pos": 2, "team": "Liverpool", "played": 24, "gd": 22, "pts": 50 },
+    { "pos": 3, "team": "Man City", "played": 24, "gd": 20, "pts": 48 }
   ]
 }

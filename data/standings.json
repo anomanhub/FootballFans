@@ -1,0 +1,8 @@
+{
+  "league": "epl",
+  "updated": "2026-02-01",
+  "table": [
+    { "team": "Arsenal", "pts": 52, "gd": 25 },
+    { "team": "Liverpool", "pts": 50, "gd": 22 }
+  ]
+}

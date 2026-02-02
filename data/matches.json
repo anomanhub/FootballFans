@@ -1,10 +1,22 @@
 [
   {
     "id": 1,
-    "league": "epl",
+    "league": "EPL",
     "date": "2026-02-02",
+    "time": "19:30",
     "home": "Arsenal",
     "away": "Liverpool",
-    "score": "0 - 0"
+    "status": "FT",
+    "score": "2 - 1"
+  },
+  {
+    "id": 2,
+    "league": "EPL",
+    "date": "2026-02-03",
+    "time": "22:00",
+    "home": "Man City",
+    "away": "Chelsea",
+    "status": "NS",
+    "score": "-"
   }
 ]
